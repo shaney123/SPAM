@@ -22,9 +22,6 @@ const UserSchema = new Schema(
     password: {
       type: String,
       required: [true, "Please add a password!"],
-      validate: (password) => {
-        return validator.isStrongPassword(password);
-      },
     },
 
     username: {
@@ -80,7 +77,7 @@ const UserSchema = new Schema(
     userType: {
       type: String,
       required: true,
-      enum: ["admin", "instructor", "learner"],
+      enum: ["admin", "teacher", "student"],
       default: "learner",
     },
 
