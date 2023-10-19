@@ -25,14 +25,23 @@ const Login = ({ navigation }) => {
   const handleLogin = () => {
     console.log("login function called");
     axios
-      .post("http://10.40.30.61:3101/api/v1/user/login", data)
+      .post("http://192.168.1.36:3101/api/v1/user/login", data)
       .then((res) => {
         console.log(res.data);
+
+        if (res.data.success) {
+          if(res.data.authority==='student'){
+             console.log("true");
+    navigation.navigate('Studentdashboard')
+}
+}
+else {
+    console.log("Operation failed");
+}
       })
       .catch((error) => {
         console.error(error);
       });
-    console.log("after axios call");
   };
 
   const toggleShowPassword = () => {

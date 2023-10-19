@@ -46,21 +46,17 @@ const RegisterScreen = ({ navigation }) => {
   }, []);
 
   const handleRegister = () => {
-    // Check if any field is empty
+   
     const isFormIncomplete = Object.values(formData).some(value => value === '');
 
     if (isFormIncomplete) {
-      // Show a warning if the form is incomplete
+   
       Alert.alert('Incomplete Form', 'Please fill out all the form fields before registering.');
     } else {
-      // Save the form data (you can implement your data saving logic here)
-
-      // Show a confirmation prompt
       Alert.alert('Registration Successful', 'Your data has been saved.', [
         {
           text: 'OK',
           onPress: () => {
-            // Navigate back to the login screen or any other screen as needed
             navigation.navigate('LoginScreen');
           },
         },
@@ -73,7 +69,7 @@ const RegisterScreen = ({ navigation }) => {
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Create an account</Text>
         <Image
-          source={require('../src/assets/ustplogo.png')} // Replace with your logo image
+          source={require('../src/assets/ustplogo.png')} 
           style={styles.logoImage}
         />
       </View>
@@ -145,7 +141,7 @@ const RegisterScreen = ({ navigation }) => {
   <View>
     <TouchableOpacity
       style={[styles.registerButton, { width: '40%', alignSelf: 'center' }]}
-      onPress={handleRegister} // Move this line outside of the style object
+      onPress={handleRegister}
     >
       <Text style={styles.registerButtonText}>Submit</Text>
     </TouchableOpacity>
