@@ -1,34 +1,41 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { StatusBar } from 'expo-status-bar';
-import axios from 'axios';
-
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { StatusBar } from "expo-status-bar";
+import axios from "axios";
 
 const Login = ({ navigation }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  
 
-  
-  const data ={
+  const data = {
     username: username,
     password: password,
-  }
-  
-  const handleLogin = () => {
-  axios.post('http://localhost:3001/api/v1/user/login', data)
-    .then((res) => {
-      console.log(res.data);
-    }) 
-    .catch((error) => {
-      console.error(error);
-    });
-    
-};
+  };
 
-   const toggleShowPassword = () => {
+  const handleLogin = () => {
+    console.log("login function called");
+    axios
+      .post("http://10.40.30.61:3101/api/v1/user/login", data)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    console.log("after axios call");
+  };
+
+  const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
@@ -36,21 +43,22 @@ const Login = ({ navigation }) => {
     <View style={styles.container}>
       {/* HEADER */}
       <View style={styles.header}>
-        <Image source={require('../src/assets/ustplogo.png')} style={styles.logo} />
+        <Image
+          source={require("../src/assets/ustplogo.png")}
+          style={styles.logo}
+        />
       </View>
 
       {/* CENTER */}
       <View style={styles.center}>
         <ImageBackground
-          source={require('../src/assets/login.png')}
+          source={require("../src/assets/login.png")}
           style={styles.backgroundImage}
         ></ImageBackground>
       </View>
 
       {/* FOOTER */}
       <View style={styles.footer}>
-
-
         {/* Username Input */}
         <View style={styles.inputContainer}>
           <Icon name="user" size={24} color="black" style={styles.inputIcon} />
@@ -62,51 +70,51 @@ const Login = ({ navigation }) => {
           />
         </View>
 
-       {/* Password Input */}
-      <View style={styles.inputContainer}>
-        <Icon name="lock" size={24} color="black" style={styles.inputIcon} />
-        <TextInput
-          placeholder="Password"
-          secureTextEntry={!showPassword}
-          style={styles.input}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-        />
-        {/* Show Password Icon */}
+        {/* Password Input */}
+        <View style={styles.inputContainer}>
+          <Icon name="lock" size={24} color="black" style={styles.inputIcon} />
+          <TextInput
+            placeholder="Password"
+            secureTextEntry={!showPassword}
+            style={styles.input}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
+          {/* Show Password Icon */}
+          <TouchableOpacity
+            style={styles.showPasswordIcon}
+            onPress={toggleShowPassword}
+          >
+            <Icon
+              name={showPassword ? "eye" : "eye-slash"}
+              size={20}
+              color="#f8b319"
+            />
+          </TouchableOpacity>
+        </View>
+
+        {/* Login Button */}
         <TouchableOpacity
-          style={styles.showPasswordIcon}
-          onPress={toggleShowPassword}
+          style={[styles.loginButton, { width: "40%", alignSelf: "center" }]}
+          onPress={handleLogin}
         >
-          <Icon name={showPassword ? "eye" : "eye-slash"} size={20} color="#f8b319" />
+          <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
-      </View>
-
-     {/* Login Button */}
-       <TouchableOpacity
-  style={[styles.loginButton, { width: '40%', alignSelf: 'center' }]}
-  onPress={handleLogin}
-     >
-  <Text style={styles.loginButtonText}>Login</Text>
-     </TouchableOpacity>
-
 
         <Text style={styles.text}>Don't have an account? </Text>
 
         {/* Register Link */}
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Register');
+            navigation.navigate("Register");
           }}
         >
           <Text style={styles.registerLink}>Click here to Register!</Text>
         </TouchableOpacity>
       </View>
 
-
       {/* StatusBar */}
       <StatusBar style="auto" />
-
-
     </View>
   );
 };
@@ -115,30 +123,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Color.primary,
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   header: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "flex-end",
     paddingHorizontal: 5,
     backgroundColor: Color.primary,
-    padding: 15
+    padding: 15,
   },
   logo: {
     width: 65,
     height: 60,
-  
   },
   center: {
     flex: 3,
-    backgroundColor: '#000080',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#000080",
+    alignItems: "center",
+    justifyContent: "center",
   },
   backgroundImage: {
-    width: '100%',
-    height: '135%',
+    width: "100%",
+    height: "135%",
   },
   footer: {
     flex: 2,
@@ -147,14 +154,14 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 16,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 10,
   },
   showPasswordIcon: {
-    position: 'absolute',
+    position: "absolute",
     right: 10,
   },
   inputIcon: {
@@ -171,8 +178,8 @@ const styles = StyleSheet.create({
     height: 40,
     width: 30,
     borderRadius: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   loginButtonText: {
     color: Color.primary,
@@ -181,8 +188,8 @@ const styles = StyleSheet.create({
   registerLink: {
     color: Color.secondary,
     fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     marginTop: 5,
   },
   text: {
@@ -191,7 +198,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 15,
     color: Color.secondary,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 
