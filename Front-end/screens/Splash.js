@@ -4,7 +4,6 @@ import Color from '../src/constants/Color';
 
 const Splash = ({ navigation }) => {
 useEffect(() => {
-    // Replace the navigation action with what you need
     setTimeout(() => {
       navigation.replace('Onboarding');
     }, 3000);
