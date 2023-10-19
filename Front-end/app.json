@@ -1,6 +1,15 @@
 {
   "expo": {
-    "name": "myApp",
-    "slug": "myApp"
+    "name": "Shaney",
+    "slug": "Shaney"
+  },
+  
+  "platforms": {
+    "web": {
+      "build": {
+        "outputDir": "web-build"
+      }
+    }
   }
 }
+

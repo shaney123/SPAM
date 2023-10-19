@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView,TextInput
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
-
+import { useState } from 'react';
 
 const Studentdashboard = () => {
 
@@ -13,12 +13,25 @@ const navigation = useNavigation();
     // Navigate to the profile dashboard screen
     navigation.navigate('Profiledashboard');
   };
-   const handleHamburgerMenuPress = () => {
-    // Open the menu or perform any other desired action
-    // You can implement your menu logic here
+  
+  //hamburger fuction
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [overlayVisible, setOverlayVisible] = useState(false);
+
+  // Function to toggle the hamburger menu
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
+  // Function to toggle the overlay menu
+  const toggleOverlay = () => {
+    setOverlayVisible(!overlayVisible);
+  };
 
+  const navigateToOption = (option) => {
+    // Implement your navigation logic here
+    // Example: navigation.navigate(option);
+  };
   return (
 
 
@@ -38,14 +51,28 @@ const navigation = useNavigation();
         </View>
 
         {/* Hamburger Menu Icon */}
-        <TouchableOpacity style={styles.hamburgerButton}>
-          <Icon name="bars" size={24} color="#000080" />
+      <TouchableOpacity
+        style={styles.hamburgerButton}
+        onPress={toggleMenu} // Toggle the menu on button press
+      >
+        <Icon name="bars" size={24} color="#000080" />
+      </TouchableOpacity>
+    </View>
+
+    {/* Menu Options (conditional rendering) */}
+    {menuOpen && (
+      <View style={styles.menuOptions}>
+        <TouchableOpacity onPress={() => navigation.navigate('Option1')}>
+          <Text>Option 1</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Option2')}>
+          <Text>Option 2</Text>
+        </TouchableOpacity>
+        {/* Add more options as needed */}
       </View>
-    
+    )}
    
 
-      
       {/* Content */}
 
 <View style={styles.content}>
@@ -126,8 +153,8 @@ const navigation = useNavigation();
         <TouchableOpacity style={styles.footerButton}>
           <Icon name="heart" size={30} color="#000080" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.footerButton}>
-          <Icon name="inbox" size={30} color="#000080" />
+        <TouchableOpacity style={styles.footerButton} >
+          <Icon name="comment" size={30} color="#000080" />
         </TouchableOpacity>
       </View>
 
@@ -173,7 +200,19 @@ const styles = StyleSheet.create({
  hamburgerButton: {
     marginRight: 10,
   },
-
+   overlayContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: '50%', // Cover half of the container
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlayMenu: {
+    // Customize the menu style here
+  },
   marginRight: {
   marginRight: 15,
   
