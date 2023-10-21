@@ -1,0 +1,55 @@
+//3B.
+1. Llausas
+2. Galendez
+3. Hadjimalic
+4. Tomimbang
+5. Fernandez
+6. Pascan
+7. Gumina
+8. Obsequias
+9. Vequizo
+10. Jamero
+11. Paurom
+12. Barrios
+13. Arancana
+14. Sihay
+15. Daigdigan
+16. Paelmarin
+17. Dael
+18. Lao
+19. Bacala
+20. Lusterio
+21. Somingin
+22. Apostol
+23. Pacturan
+24. Pahunang
+25. Pabellan
+26. Puzon
+27. Tajuda
+28. Marfe
+
+//3A
+1. Abelidas
+2. Acut
+3. Villanueva
+4. Tabunan
+5. Villaceran
+6. Regalado
+7. Almonia
+8. Hufancia
+9. Munion
+10. Canneos
+11. Navajo
+12. Calona
+13. Catunao
+14. Ellevera
+15. Tagarda
+16. Pagaspas
+17. Ipulan
+18. Estupa
+19. Espiritu
+20. Corea
+21. Solante
+22. Bangalao
+23. Gardones
+24. 
