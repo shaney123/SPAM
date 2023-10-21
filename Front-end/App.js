@@ -1,7 +1,8 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Splash from './screens/Splash';
 import Onboarding from './screens/Onboarding';
 import Login from './screens/Login';
@@ -9,24 +10,44 @@ import Register from './screens/Register';
 import Studentdashboard from './screens/StudentDashboard/Studentdashboard';
 import Profiledashboard from './screens/StudentDashboard/Profiledashboard';
 import Overlaymenu from './screens/StudentDashboard/components/Overlaymenu';
+import Instructordashboard from './screens/Instructor/Instructordashboard';
+import Admindashboard from './screens/Admin/Admindashboard';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  const [initialRouteName, setInitialRouteName] = React.useState('Splash');
+
+  useEffect(() => {
+    AsyncStorage.getItem('lastVisitedScreen')
+      .then((lastVisitedScreen) => {
+        if (lastVisitedScreen) {
+          setInitialRouteName(lastVisitedScreen);
+        }
+      })
+      .catch((error) => {
+        console.error('Error checking last visited screen:', error);
+      });
+  }, []);
 
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Splash" component={Splash} />
-        <Stack.Screen name="Onboarding" component={Onboarding} />
+        <Stack.Screen name="Splash" component={Splash}  />
+        <Stack.Screen name="Onboarding" component={Onboarding} initialParams={{ initialRouteName: initialRouteName }} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Studentdashboard" component={Studentdashboard} />
         <Stack.Screen name="Profiledashboard" component={Profiledashboard} />
         <Stack.Screen name="Overlaymenu" component={Overlaymenu} />
+        <Stack.Screen name="Instructordashboard" component={Instructordashboard} />
+        <Stack.Screen name="Admindashboard" component={Admindashboard} />
       </Stack.Navigator>
+
+
     </NavigationContainer>
   );
 };
+
 
 export default App;
