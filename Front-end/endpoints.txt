@@ -1,0 +1,8 @@
+//Register
+(POST) /api/v1/user = login, pass object
+(POST)/api/v1/user = register, pass ang object
+(GET)/api/v1/user = fetch all users, need admin authority
+(GET)/api/v1/user/${userId} = fetch specific user, need nakalogin nga token
+(GET)/api/v1/user/logout = logout, ipasa ang token
+(PATCH) /api/v1/user/${userId} = update user, need token
+
