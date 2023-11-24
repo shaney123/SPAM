@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Splash from './screens/Splash';
 import Onboarding from './screens/Onboarding';
@@ -12,6 +11,9 @@ import Profiledashboard from './screens/StudentDashboard/Profiledashboard';
 import Overlaymenu from './screens/StudentDashboard/components/Overlaymenu';
 import Instructordashboard from './screens/Instructor/Instructordashboard';
 import Admindashboard from './screens/Admin/Admindashboard';
+import Myclasses from './screens/Instructor/Myclasses';
+import Mycourses from './screens/Instructor/Mycourses';
+import PerformanceScreen from './screens/StudentDashboard/PerformanceScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +44,8 @@ const App = () => {
         <Stack.Screen name="Overlaymenu" component={Overlaymenu} />
         <Stack.Screen name="Instructordashboard" component={Instructordashboard} />
         <Stack.Screen name="Admindashboard" component={Admindashboard} />
+        <Stack.Screen name ="PerformanceScreen" component={PerformanceScreen}/>
+      
       </Stack.Navigator>
 
 
