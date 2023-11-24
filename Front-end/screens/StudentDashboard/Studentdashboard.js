@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
@@ -21,10 +21,8 @@ const Studentdashboard = () => {
     navigation.navigate('Profiledashboard');
   };
 
-  // Hamburger function
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Function to toggle the hamburger menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -32,6 +30,33 @@ const Studentdashboard = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  const subjects = [
+    {
+      name: "Information Assurance Security",
+      imageSource: require('../StudentDashboard/assets/mb6.png'),
+    },
+    {
+      name: "Networking 2",
+      imageSource: require('../StudentDashboard/assets/mb5.png'),
+    },
+    {
+      name: "Technopreneurship",
+      imageSource: require('../StudentDashboard/assets/mb4.png'),
+    },
+    {
+      name: "Mobile Programming",
+      imageSource: require('../StudentDashboard/assets/mb3.png'),
+    },
+    {
+      name: "IT Elective 1",
+      imageSource: require('../StudentDashboard/assets/mb2.png'),
+    },
+    {
+      name: "Software Engineering",
+      imageSource: require('../StudentDashboard/assets/mb1.png'),
+    },
+  ];
 
   return (
     <View style={styles.container}>
@@ -48,13 +73,11 @@ const Studentdashboard = () => {
             </View>
           </View>
 
-          {/* Hamburger Menu Icon */}
           <TouchableOpacity style={styles.hamburgerButton} onPress={toggleMenu}>
             <Icon name="bars" size={24} color="#000080" />
           </TouchableOpacity>
         </View>
 
-        {/* Content */}
         <View style={styles.content}>
           <View style={styles.centeredContent}>
             <View style={styles.searchContainer}>
@@ -70,57 +93,19 @@ const Studentdashboard = () => {
           <Text style={styles.contentText}>SUBJECTS</Text>
 
           <View style={styles.subjectContainer}>
-            {/* Subject 1 */}
-            <View style={styles.subjectBox}>
-              <TouchableOpacity>
-                <Image source={require('../StudentDashboard/assets/mb6.png')} style={styles.subjectIcon} />
+            {subjects.map((subject, index) => (
+               <TouchableOpacity key= {index} onPress={()=>{
+                  navigation.navigate('PerformanceScreen' , { subject});
+                }}>
+              <View style={styles.subjectBox} key={index}>
+                  <Image source={subject.imageSource} style={styles.subjectIcon} />
+                   <Text style={styles.subjectText}>{subject.name}</Text>
+               </View>
               </TouchableOpacity>
-              <Text style={styles.subjectText}>Information Assurance Security</Text>
-            </View>
-
-            {/* Subject 2 */}
-            <View style={styles.subjectBox}>
-              <TouchableOpacity>
-                <Image source={require('../StudentDashboard/assets/mb5.png')} style={styles.subjectIcon} />
-              </TouchableOpacity>
-              <Text style={styles.subjectText}>Networking 2</Text>
-            </View>
-
-            {/* Subject 3 */}
-            <View style={styles.subjectBox}>
-              <TouchableOpacity>
-                <Image source={require('../StudentDashboard/assets/mb4.png')} style={styles.subjectIcon} />
-              </TouchableOpacity>
-              <Text style={styles.subjectText}>Technopreneurship</Text>
-            </View>
-
-            {/* Subject 4 */}
-            <View style={styles.subjectBox}>
-              <TouchableOpacity>
-                <Image source={require('../StudentDashboard/assets/mb3.png')} style={styles.subjectIcon} />
-              </TouchableOpacity>
-              <Text style={styles.subjectText}>Mobile Programming</Text>
-            </View>
-
-            {/* Subject 5 */}
-            <View style={styles.subjectBox}>
-              <TouchableOpacity>
-                <Image source={require('../StudentDashboard/assets/mb2.png')} style={styles.subjectIcon} />
-              </TouchableOpacity>
-              <Text style={styles.subjectText}>IT Elective 1</Text>
-            </View>
-
-            {/* Subject 6 */}
-            <View style={styles.subjectBox}>
-              <TouchableOpacity>
-                <Image source={require('../StudentDashboard/assets/mb1.png')} style={styles.subjectIcon} />
-              </TouchableOpacity>
-              <Text style={styles.subjectText}>Software Engineering</Text>
-            </View>
+            ))}
           </View>
         </View>
 
-         {/* Footer */}
         <View style={styles.footer}>
           <TouchableOpacity style={styles.footerButton}>
             <Icon name="home" size={30} color="#000080" />
@@ -129,22 +114,18 @@ const Studentdashboard = () => {
             <Icon name="heart" size={30} color="#000080" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.footerButton}>
-            <Icon name="comment" size={30} color="#000080" />
+            <Icon name="comment" size={30} color ="#000080" />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
 
-      {/* Menu Overlay */}
       {menuOpen && (
-
         <View style={styles.menuOverlay}>
-
-        <View style={styles.menuHeader}>
+          <View style={styles.menuHeader}>
             <TouchableOpacity onPress={closeMenu}>
-              <Icon name="times" size={24} color="#000080" />
+              <Icon name="times" size={30} color="#000080" />
             </TouchableOpacity>
           </View>
-
           <View style={styles.menuOptions}>
             <TouchableOpacity onPress={handleLogout}>
               <Text>Log out</Text>
@@ -156,10 +137,7 @@ const Studentdashboard = () => {
         </View>
       )}
 
-
-       {/* StatusBar */}
       <StatusBar style="auto" />
-      
     </View>
   );
 };
@@ -208,7 +186,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: '#000080',
     paddingTop: 45,
-    paddingBottom: 135
+    paddingBottom: 135,
   },
   centeredContent: {
     alignItems: 'center',
@@ -270,29 +248,31 @@ const styles = StyleSheet.create({
   },
   menuOverlay: {
     position: 'absolute',
-    top: 0,
+    top: 10,
     left: 160,
     right: 0,
     bottom: 0,
-    backgroundColor: '#f8b319',
+    backgroundColor: '#fff',
+    elevation: 55,
+    borderRadius: 40,
   },
-  menuHeader:{
-       paddingTop: 40,
-       marginLeft: 155,
+  menuHeader: {
+    paddingTop: 45,
+    marginLeft: 155,
   },
   menuOptions: {
-    paddingTop: 70,
+    paddingTop: 45,
     width: '100%',
+    height: '70%',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    justifyContent: 'center',
     alignItems: 'center',
   },
-   footer: {
+  footer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: 15,
-    backgroundColor:'#F8B319',
+    backgroundColor: '#F8B319',
   },
   footerButton: {
     alignItems: 'center',
