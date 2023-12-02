@@ -1,0 +1,85 @@
+//3B
+1. Jamero - 45 + 39
+2. Tomimbang - 45 + 39 
+3. Llausas - 50 + 40
+4. Paurom - 50 + 50
+5. Fernandez - 50 + 42
+6. Gumina - 38 + 35
+7. Primer - 50 + 43
+8. Galendez - 50 + 39
+9. Hadjimalic - 50 + 42
+10. Vequizo - 37 + 46
+11. Paelmarin - 38 + 35
+12. Chunlee - 45 + 38
+
+13. Tajuda - 50 + 36
+14. Pahunang - 45 + 37
+15. Madrelejos - 50
+16. Pabellan - 35 + 41
+17. Alipar - 35 + 39
+18. Apostol - 35 + 36
+19. Puzon - 37 + 35
+20. Naingue - 35 + 35
+21. Sihay - 35 + 35
+22. Zamayla - 35
+23. Pacturan - 35 + 37
+24. Daigdigan - 35 + 37
+25. Somingin - 35 + 35
+26. Lao - 35 + 35
+27. Pascan - 35 + 35
+28. Cabingas - 35 + 35
+29. Lusterio - 35 + 35  
+30. Bacala -35 + 35
+31. Obsequias - 35
+32. Dael - 35
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 3A
+1. Canneos - 50 + 50
+2. Mercedes - 50 + 40
+3. Delos Santos - 50 + 39
+4. Munion - 50 + 39
+5. Arididon - 50 + 40
+6. Macabasa - 50 + 47
+7. Almonia - 50 + 43
+8. Regalado - 50 + 44
+9. Apuhin - 50 + 30
+10. Gardones - 35 + 40
+11. Navajo - 35 + 37
+12. Valcorza - 35 + 40 
+13. Bangalao - 35 + 36
+14. Cabeltes - 35 + 36
+15. Espiritu - 50 + 38
+16. Corea - 50 + 37
+17. Solante - 50 + 40
+18. Villaceran - 50 + 39 
+19. Ellevera - 50 + 39
+20. Pagaspas - 50 + 40
+21. Ipulan - 50 + 40
+22. Tagarda - 50 + 45
+23. Estupa - 50 + 43
+24. Abelidas - 50 + 39
+25. Goc-ong - 50 + 40
+26. Catunao - 50 + 40
+27. Calona - 50 + 40

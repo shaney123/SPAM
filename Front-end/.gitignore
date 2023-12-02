@@ -1,4 +1,5 @@
 node_modules/
+getBaseUrl.js
 .expo
 dist
 npm-debug.*

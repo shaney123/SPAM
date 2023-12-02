@@ -8,19 +8,18 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { StatusBar } from "expo-status-bar";
 import axios from "axios";
-
-
+import { getBaseUrl } from "../getBaseUrl";
 
 const Login = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-   const clearInputFields = () => {
+  const clearInputFields = () => {
     setUsername("");
     setPassword("");
   };
@@ -30,27 +29,30 @@ const Login = ({ navigation }) => {
     password: password,
   };
 
-   const handleLogin = async () => {
-    console.log('login function called');
+  const handleLogin = async () => {
+    console.log("login function called");
     try {
-      const res = await axios.post('http://192.168.1.36:3101/api/v1/user/login', data);
+      const res = await axios.post(`${getBaseUrl()}/user/login`, data);
 
       if (res.data.success) {
-        if (res.data.authority === 'student') {
-           clearInputFields();
-          await AsyncStorage.setItem('lastVisitedScreen', 'Studentdashboard');
-          navigation.navigate('Studentdashboard');
-        } else if (res.data.authority === 'admin') {
-           clearInputFields();
-          await AsyncStorage.setItem('lastVisitedScreen', 'Admindashboard');
-          navigation.navigate('Admindashboard');
-        } else if (res.data.authority === 'teacher') {
-           clearInputFields();
-          await AsyncStorage.setItem('lastVisitedScreen', 'Instructordashboard');
-          navigation.navigate('Instructordashboard');
+        if (res.data.authority === "student") {
+          clearInputFields();
+          await AsyncStorage.setItem("lastVisitedScreen", "Studentdashboard");
+          navigation.navigate("Studentdashboard");
+        } else if (res.data.authority === "admin") {
+          clearInputFields();
+          await AsyncStorage.setItem("lastVisitedScreen", "Admindashboard");
+          navigation.navigate("Admindashboard");
+        } else if (res.data.authority === "teacher") {
+          clearInputFields();
+          await AsyncStorage.setItem(
+            "lastVisitedScreen",
+            "Instructordashboard"
+          );
+          navigation.navigate("Instructordashboard");
         }
       } else {
-        console.log('Operation failed');
+        console.log("Operation failed");
       }
     } catch (error) {
       console.error(error);
@@ -62,15 +64,14 @@ const Login = ({ navigation }) => {
   };
 
   useEffect(() => {
-   
-    AsyncStorage.getItem('lastVisitedScreen')
+    AsyncStorage.getItem("lastVisitedScreen")
       .then((lastVisitedScreen) => {
         if (lastVisitedScreen) {
           navigation.navigate(lastVisitedScreen);
         }
       })
       .catch((error) => {
-        console.error('Error checking last visited screen:', error);
+        console.error("Error checking last visited screen:", error);
       });
   }, []);
 
@@ -135,7 +136,7 @@ const Login = ({ navigation }) => {
         >
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
-          
+
         <Text style={styles.text}>Don't have an account? </Text>
 
         {/* Register Link */}

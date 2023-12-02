@@ -85,6 +85,10 @@ const UserSchema = new Schema(
       type: String,
       //   required: true,
     },
+    section: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Section",
+    },
     img: {
       type: String,
       // required: true,
