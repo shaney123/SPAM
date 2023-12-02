@@ -1,23 +1,19 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const SectionSchema = new Schema(
+const AttendanceSchema = new Schema(
   {
-    sectionName: {
-      type: String,
-      required: true,
+    student: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
-    students: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
-    course: {
-      type: String,
+    subject: {
+      type: Schema.Types.ObjectId,
+      ref: "Subject",
     },
-    adviser: {
+    status: {
       type: String,
+      enum: ["Late", "Absent", "Present"],
     },
   },
   {
@@ -25,4 +21,4 @@ const SectionSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("Section", SectionSchema);
+module.exports = mongoose.model("Attendance", AttendanceSchema);

@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const user = require("./routes/user");
+const attendance = require("./routes/attendance");
 
 const logger = require("./middlewares/logger");
 const errorHandler = require("./middlewares/error");
@@ -70,6 +71,7 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 3001;
 
 app.use("/api/v1/user", user);
+app.use("/api/v1/attendance", attendance);
 
 const server = app.listen(PORT, () => {
   console.log(`Server is listening on PORT: ${PORT}`);
