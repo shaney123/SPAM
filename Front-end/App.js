@@ -14,6 +14,10 @@ import Admindashboard from './screens/Admin/Admindashboard';
 import Myclasses from './screens/Instructor/Myclasses';
 import Mycourses from './screens/Instructor/Mycourses';
 import PerformanceScreen from './screens/StudentDashboard/PerformanceScreen';
+import InboxScreen from './screens/StudentDashboard/InboxScreen';
+import Attendance from './screens/Instructor/Attendance';
+import ClassesScreen from './screens/Instructor/ClasssesScreen';
+import CoursesScreen from './screens/Instructor/CoursesScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -45,7 +49,16 @@ const App = () => {
         <Stack.Screen name="Instructordashboard" component={Instructordashboard} />
         <Stack.Screen name="Admindashboard" component={Admindashboard} />
         <Stack.Screen name ="PerformanceScreen" component={PerformanceScreen}/>
-      
+        <Stack.Screen name = "InboxScreen" component={InboxScreen}/>
+        <Stack.Screen name = "Attendance" component = { Attendance}/>
+        <Stack.Screen name = "Myclasses" component={Myclasses}/>
+        <Stack.Screen name = "Mycourses" component={Mycourses}/>
+        <Stack.Screen name = "ClassesScreen" component={ClassesScreen}/>
+        <Stack.Screen  name = "CoursesScreen" component={CoursesScreen}/>
+
+
+        
+              
       </Stack.Navigator>
 
 

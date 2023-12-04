@@ -49,25 +49,36 @@ const Instructordashboard = () => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.content}>
-          <Text style={styles.contentText}>Instructor Overview</Text>
-          <View style={styles.instructorOptions}>
-            <View style={styles.instructorOption}>
-              <View style={styles.instructorOptionText}>
-                <Text style={styles.instructorOptionTitle}>Classes</Text>
-                <Text style={styles.instructorOptionNumber}>2</Text>
-              </View>
-              <Icon name="graduation-cap" size={65} color="#000080" style={styles.icon} />
-            </View>
-            <View style={styles.instructorOption}>
-              <View style={styles.instructorOptionText}>
-                <Text style={styles.instructorOptionTitle}>Courses</Text>
-                <Text style={styles.instructorOptionNumber}>1</Text>
-              </View>
-              <Icon name="book" size={65} color="#000080" style={styles.icon} />
-            </View>
-          </View>
-        </View>
+<View style={styles.content}>
+  <Text style={styles.contentText}>Instructor Overview</Text>
+  <TouchableOpacity
+    onPress={() => {
+      navigation.navigate('ClassesScreen');
+    }}
+    style={styles.instructorOption}
+  >
+    <View style={styles.instructorOptionText} >
+      <Text style={styles.instructorOptionTitle}>Classes</Text>
+      <Text style={styles.instructorOptionNumber}>2</Text>
+    </View>
+    <Icon name="graduation-cap" size={65} color="#000080" style={styles.icon} />
+  </TouchableOpacity>
+
+  <TouchableOpacity
+    onPress={() => {
+      navigation.navigate('CoursesScreen');
+    }}
+    style={styles.instructorOption}
+  >
+    <View style={styles.instructorOptionText} >
+      <Text style={styles.instructorOptionTitle}>Courses</Text>
+      <Text style={styles.instructorOptionNumber}>1</Text>
+    </View>
+    <Icon name="book" size={65} color="#000080" style={styles.icon} />
+  </TouchableOpacity>
+</View>
+
+
 
         <View style={styles.footer}>
           <TouchableOpacity style={styles.footerButton}>
