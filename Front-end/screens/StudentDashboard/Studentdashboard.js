@@ -20,7 +20,9 @@ const Studentdashboard = () => {
   const handleProfilePress = () => {
     navigation.navigate('Profiledashboard');
   };
-
+  const handlePress = () => {
+    navigation.navigate('InboxScreen'); 
+  };
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -113,7 +115,7 @@ const Studentdashboard = () => {
           <TouchableOpacity style={styles.footerButton}>
             <Icon name="heart" size={30} color="#000080" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.footerButton}>
+          <TouchableOpacity style={styles.footerButton} onPress={handlePress}>
             <Icon name="comment" size={30} color ="#000080" />
           </TouchableOpacity>
         </View>
