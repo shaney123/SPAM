@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'reac
 
 const Attendance = () => {
   const [students, setStudents] = useState([
-    { id: '1', name: 'John Doe', present: false, late: false, date: null },
-    { id: '2', name: 'Jane Smith', present: false, late: false, date: null },
+    { id: '1', name: 'Shane1', present: false, late: false, date: null },
+    { id: '2', name: 'Shaney2', present: false, late: false, date: null },
  
   ]);
 
